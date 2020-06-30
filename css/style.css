@@ -1,0 +1,42 @@
+body
+{
+    font-family: 'Roboto', sans-serif;
+    background-color: lightgrey;
+}
+#board
+{
+    position: absolute;
+    padding-top:3em;
+    text-align: center;
+    left: 37%;
+}
+.row
+{
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+    width: 302px;    
+}
+.row > div
+{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+}
+.top
+{
+    border-bottom: 1px solid black;
+}
+.bottom
+{
+    border-top: 1px solid red;
+}
+.right
+{
+    border-left: 1px solid violet;
+}
+.left
+{
+    border-right: 1px solid cornflowerblue;
+}

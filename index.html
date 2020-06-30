@@ -1,12 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Home Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Roboto:ital,wght@1,300&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Hello World!</h1>
+    <!--Board Container-->
+    <div id="board">
+        <!--Board Header-->
+        <h1>Tic Tac Toe</h1>
+        <!--First Row-->
+        <div class="row">
+                <div class="top left"></div>
+                <div class="top middle"></div>
+                <div class="top right"></div>
+        </div>
+        <!--Second Row-->
+        <div class="row">
+                <div class="left"></div>
+                <div class="middle"></div>
+                <div class="right"></div>
+        </div>
+        <!--Third Row-->
+        <div class="row">
+               <div class="bottom left"></div>
+               <div class="bottom middle"></div>
+               <div class="bottom right"></div>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
 </body>
+
 </html>

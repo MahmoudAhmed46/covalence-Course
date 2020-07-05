@@ -1,48 +1,76 @@
-//My Name
-let name = "Mahmoud";
-//Number of Sates in Us
-const stateUs = 14;
-//Adding 5+4
-let sum = 5 + 4;
-//Implementaion Hello world in alert
-function sayHello(){
-    alert("Hello World!");
-}
-//calling sayHello Function
-sayHello();
-//Implementaion checkAge function
-function checkAge (name,age){
-    if(age < 21){
-        alert("sorry "+name + ", you aren't old enough to view this page!");
-    }
+//get all cells in each row
+let cells = document.querySelectorAll('.row > div');
+let result = document.getElementById('result');
+let currentPlayer="X";
+let gameState = ["", "", "", "", "", "", "", "", ""];
+//some Messages we will display to the user
+const winningMessage = () => `Player ${currentPlayer} has won!`;
+const drawMessage = () => `Game ended in a draw!`;
 
+//add event on each cell
+
+cells.forEach((cell,i)=>cell.addEventListener('click',function cellClicked(){
+    if(result.textContent!==""){
+        //alert("Hello");
+        restGame();
+        
+        return;
+    }
+    if(currentPlayer==="X"){
+        event.target.textContent=currentPlayer;
+        gameState[i]=currentPlayer;
+    }
+    else{
+        event.target.textContent=currentPlayer;
+        gameState[i]=currentPlayer;
+    }
+    handleResultValidation();
+}));
+
+//winning Conditions
+const winningConditions = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+];
+//Helper Function
+function handleResultValidation(){
+    let roundWon=false;
+    for(let i=0;i<8;i++){
+        const winCondition=winningConditions[i];
+        let firstCell  = gameState[winCondition[0]];
+        let secondCell = gameState[winCondition[1]];
+        let thirdCell  = gameState[winCondition[2]];
+        if(firstCell === '' || secondCell === '' || thirdCell === '' ){
+            continue;
+        }
+        if(firstCell === secondCell && secondCell === thirdCell){
+            roundWon=true;
+            break;
+        }
+    }
+    if(roundWon){
+        result.textContent = winningMessage();
+        return;
+    }
+    let roundDrow = !gameState.includes("");
+    if(roundDrow){
+        result.textContent = drawMessage();
+        return;
+    }
+    changePlayer();   
 }
-//Calling checkAge Function
-checkAge('Charles',21);
-checkAge('Abby' ,27);
-checkAge('James' ,18);
-checkAge('John' ,17);
-//Create array conaing vegetables name
-let vegetables = ['Broccoli','Celery','Cucumber','Cauliflower','Beetroot'];
-//Print each value in array vegetable
-for(let val of vegetables){
-    console.log(val);
+function changePlayer(){
+    currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
-//create object
-let pet={
-    name:"",
-    breed:""
-};
-//create array of objects each object have name and age properity
-let details=[{name:"Mahmoud",age:22},{name:"Ahmed",age:20},{name:"Yasser",age:32},{name:"Hassan",age:20},{name:"Abdo",age:23}];
-//check each object in array
-details.forEach(element => {
-    //call function check age
-    checkAge(element.name,element.age);
-});
-//create function getLength to calculate number of characters in passing string value
-function getLength(value){
-return value.length;
+function restGame(){
+   
+        gameState = ["", "", "", "", "", "", "", "", ""];
+        cells.forEach(cell=>cell.textContent="");
+        result.textContent="";
 }
-let numCharacters=getLength('Hello World');
-(numCharacters&1)?console.log('The world is an odd place!'):console.log('The world is nice and even!');

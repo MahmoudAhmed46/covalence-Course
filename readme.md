@@ -4,3 +4,5 @@
 # Lab: JavaScript Kitchen Sink
 # Lab: 99 Lines of Code - Part 1
 # Tic Tac Toe Final Product
+# jQuery Drills
+* practice on jquery
